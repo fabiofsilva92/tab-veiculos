@@ -6,8 +6,6 @@ import com.itau.desafio.domain.db.Veiculo;
 import com.itau.desafio.framework.adapter.in.dtos.VeiculoRequestDTO;
 import com.itau.desafio.framework.adapter.in.dtos.VeiculoResponseDTO;
 
-import java.util.Date;
-
 public class VeiculoMapper {
 
     public static Veiculo toVeiculo(VeiculoRequestDTO veiculoRequestDTO) {
@@ -19,7 +17,7 @@ public class VeiculoMapper {
                 .ano(checkIfIsNull(veiculoRequestDTO.getAno()))
                 .descricao(checkIfIsNull(veiculoRequestDTO.getDescricao()))
                 .capacidadeTanque(checkIfIsNull(veiculoRequestDTO.getCapacidadeTanque()))
-                .autonomia(checkIfIsNull(veiculoRequestDTO.getAutonomia()))
+                .consumo(checkIfIsNull(veiculoRequestDTO.getConsumo()))
                 .build();
     }
 
@@ -33,7 +31,9 @@ public class VeiculoMapper {
                 .ano(checkIfIsNull(veiculo.getAno()))
                 .descricao(checkIfIsNull(veiculo.getDescricao()))
                 .capacidadeTanque(checkIfIsNull(veiculo.getCapacidadeTanque()))
+                .consumo(checkIfIsNull(veiculo.getConsumo()))
                 .autonomia(checkIfIsNull(veiculo.getAutonomia()))
+                .checkup(checkIfIsNull(veiculo.getCheckup()))
                 .created(checkIfIsNull(veiculo.getCreated()))
                 .updated(checkIfIsNull(veiculo.getUpdated()))
                 .build();

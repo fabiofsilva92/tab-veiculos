@@ -23,4 +23,7 @@ public interface VeiculosPortIn {
     GenericResponse getQuantidadeByMarca(String marca);
 
     GenericResponse getQuantidadeByDecada(Integer ano);
+
+    VeiculoResponseDTO realizarCheckup(Long id);
+    VeiculoResponseDTO calcularAutonomia(Long id);
 }

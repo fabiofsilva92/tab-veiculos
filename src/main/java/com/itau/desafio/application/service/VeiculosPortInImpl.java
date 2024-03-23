@@ -18,6 +18,9 @@ public class VeiculosPortInImpl implements VeiculosPortIn {
 
     @Autowired
     private VeiculosDbPortOut portOut;
+    @Autowired
+    private VeiculoService service;
+
     @Override
     public List<VeiculoResponseDTO> getAllVeiculos() {
         List<Veiculo> allVeiculos = portOut.getAllVeiculos();
@@ -77,5 +80,21 @@ public class VeiculosPortInImpl implements VeiculosPortIn {
             return GenericResponse.builder().quantidade("0").decada("Não encontrado registros nesta decada").build();
         }
         return GenericResponse.builder().quantidade(String.valueOf(retorno.size())).decada("Decada de "+inicioDecada).build();
+    }
+
+    @Override
+    public VeiculoResponseDTO realizarCheckup(Long id) {
+        Veiculo veiculoById = portOut.getVeiculoById(id);
+        service.realizarCheckup(veiculoById);
+        portOut.updateVeiculo(id, veiculoById);
+        return VeiculoMapper.toVeiculoResponseDTO(veiculoById);
+    }
+
+    @Override
+    public VeiculoResponseDTO calcularAutonomia(Long id) {
+        Veiculo veiculoById = portOut.getVeiculoById(id);
+        service.calcularAutonomia(veiculoById);
+        portOut.updateVeiculo(id, veiculoById);
+        return VeiculoMapper.toVeiculoResponseDTO(veiculoById);
     }
 }

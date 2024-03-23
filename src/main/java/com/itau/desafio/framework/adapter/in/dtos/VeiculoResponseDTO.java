@@ -18,7 +18,9 @@ public class VeiculoResponseDTO {
     private Integer ano;
     private String descricao;
     private Integer capacidadeTanque;
-    private Integer autonomia;
+    private Integer consumo;
+    private Double autonomia;
+    private Boolean checkup;
     private Date created;
     private Date updated;
 }

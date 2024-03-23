@@ -17,5 +17,5 @@ public class VeiculoRequestDTO {
     private Integer ano;
     private String descricao;
     private Integer capacidadeTanque;
-    private Integer autonomia;
+    private Integer consumo;
 }

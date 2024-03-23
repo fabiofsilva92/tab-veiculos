@@ -40,12 +40,14 @@ public class VeiculosController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<VeiculoResponseDTO> updateVeiculo(@PathVariable("id") Long id, @RequestBody VeiculoRequestDTO veiculo){
+    public ResponseEntity<VeiculoResponseDTO> updateVeiculo(@PathVariable("id") Long id,
+                                                            @RequestBody VeiculoRequestDTO veiculo){
         return ResponseEntity.ok(portIn.updateVeiculo(id, veiculo));
     }
 
     @PatchMapping("/{id}")
-    public ResponseEntity<VeiculoResponseDTO> patchVeiculo(@PathVariable("id") Long id, @RequestBody VeiculoRequestDTO veiculo){
+    public ResponseEntity<VeiculoResponseDTO> patchVeiculo(@PathVariable("id") Long id,
+                                                           @RequestBody VeiculoRequestDTO veiculo){
         return ResponseEntity.ok(portIn.patchVeiculo(id, veiculo));
     }
 
@@ -63,6 +65,16 @@ public class VeiculosController {
     @GetMapping(params = {"ano"})
     public ResponseEntity<GenericResponse> getQuantidadeByAno(@RequestParam("ano") Integer ano){
         return ResponseEntity.ok(portIn.getQuantidadeByDecada(ano));
+    }
+
+    @PostMapping("/checkup")
+    public ResponseEntity<VeiculoResponseDTO> realizarCheckup(@RequestParam("id") Long id){
+        return ResponseEntity.ok(portIn.realizarCheckup(id));
+    }
+
+    @PostMapping("/autonomia")
+    public ResponseEntity<VeiculoResponseDTO> calcularAutonomia(@RequestParam("id") Long id){
+        return ResponseEntity.ok(portIn.calcularAutonomia(id));
     }
 
 }
