@@ -1,5 +1,8 @@
 Tema: API de registro de veículos.
 
+docker run --name desafiodb -e MYSQL_ROOT_PASSWORD=pass -p 3306:3306 mysql:8.0.0
+
+
 //TODO implementar features demonstrando principios SOLID
 
 //TODO implementar simulação para a infraestrutura AWS
