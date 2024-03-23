@@ -1,14 +1,14 @@
 spring:
 
   datasource:
-    url: jdbc:h2:mem:testdb;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE
-    driverClassName: org.h2.Driver
-    username: sa
-    password:
+    url: jdbc:mysql://localhost:3306/desafiodb?createDatabaseIfNotExist=True&allowPublicKeyRetrieval=true&useSSL=false&serverTimezone=UTC
+    username: root
+    password: pass
+    driver-class-name: com.mysql.cj.jdbc.Driver
 
 
   jpa:
-    database-platform: org.hibernate.dialect.H2Dialect
+    database-platform: org.hibernate.dialect.MySQL8Dialect
     show-sql: true
     hibernate:
       ddl-auto: update
@@ -16,6 +16,10 @@ spring:
     name: desafio
 
   flyway:
+    url: jdbc:mysql://localhost:3306/desafiodb?createDatabaseIfNotExist=true&allowPublicKeyRetrieval=true&useSSL=false&serverTimezone=UTC
+    schemas: desafiodb
+    user: root
+    password: pass
     locations: classpath:db/migration
   h2:
     console:
