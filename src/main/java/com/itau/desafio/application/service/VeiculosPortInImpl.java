@@ -7,6 +7,7 @@ import com.itau.desafio.framework.adapter.in.dtos.GenericResponse;
 import com.itau.desafio.framework.adapter.in.dtos.VeiculoRequestDTO;
 import com.itau.desafio.framework.adapter.in.dtos.VeiculoResponseDTO;
 import com.itau.desafio.framework.util.mapper.VeiculoMapper;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -14,6 +15,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @Service
+@Slf4j
 public class VeiculosPortInImpl implements VeiculosPortIn {
 
     @Autowired
@@ -23,16 +25,13 @@ public class VeiculosPortInImpl implements VeiculosPortIn {
 
     @Override
     public List<VeiculoResponseDTO> getAllVeiculos() {
+        log.info("Solicitando todos os veículos");
         List<Veiculo> allVeiculos = portOut.getAllVeiculos();
+        log.info("Retornando todos os veículos mapeados para DTO");
         return allVeiculos.stream().map(VeiculoMapper::toVeiculoResponseDTO)
                 .collect(Collectors.toList());
     }
 
-    @Override
-    public List<VeiculoResponseDTO> getVeiculosByMarcaAndAno(String marca, Integer ano) {
-        List<Veiculo> veiculosByMarcaAndAno = portOut.getVeiculosByMarcaAndAno(marca, ano);
-        return veiculosByMarcaAndAno.stream().map(VeiculoMapper::toVeiculoResponseDTO).collect(Collectors.toList());
-    }
 
     @Override
     public VeiculoResponseDTO getVeiculoById(Long id) {
@@ -63,6 +62,28 @@ public class VeiculosPortInImpl implements VeiculosPortIn {
     }
 
     @Override
+    public VeiculoResponseDTO realizarCheckup(Long id) {
+        Veiculo veiculoById = portOut.getVeiculoById(id);
+        service.realizarCheckup(veiculoById);
+        portOut.updateVeiculo(id, veiculoById);
+        return VeiculoMapper.toVeiculoResponseDTO(veiculoById);
+    }
+
+    @Override
+    public VeiculoResponseDTO calcularAutonomia(Long id) {
+        Veiculo veiculoById = portOut.getVeiculoById(id);
+        service.calcularAutonomia(veiculoById);
+        portOut.updateVeiculo(id, veiculoById);
+        return VeiculoMapper.toVeiculoResponseDTO(veiculoById);
+    }
+
+    @Override
+    public List<VeiculoResponseDTO> getVeiculosByMarcaAndAno(String marca, Integer ano) {
+        List<Veiculo> veiculosByMarcaAndAno = portOut.getVeiculosByMarcaAndAno(marca, ano);
+        return veiculosByMarcaAndAno.stream().map(VeiculoMapper::toVeiculoResponseDTO).collect(Collectors.toList());
+    }
+
+    @Override
     public GenericResponse getQuantidadeByMarca(String marca) {
         List<Veiculo> list = portOut.getQuantidadeByMarca(marca);
         if(list.isEmpty()){
@@ -82,19 +103,5 @@ public class VeiculosPortInImpl implements VeiculosPortIn {
         return GenericResponse.builder().quantidade(String.valueOf(retorno.size())).decada("Decada de "+inicioDecada).build();
     }
 
-    @Override
-    public VeiculoResponseDTO realizarCheckup(Long id) {
-        Veiculo veiculoById = portOut.getVeiculoById(id);
-        service.realizarCheckup(veiculoById);
-        portOut.updateVeiculo(id, veiculoById);
-        return VeiculoMapper.toVeiculoResponseDTO(veiculoById);
-    }
 
-    @Override
-    public VeiculoResponseDTO calcularAutonomia(Long id) {
-        Veiculo veiculoById = portOut.getVeiculoById(id);
-        service.calcularAutonomia(veiculoById);
-        portOut.updateVeiculo(id, veiculoById);
-        return VeiculoMapper.toVeiculoResponseDTO(veiculoById);
-    }
 }

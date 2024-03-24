@@ -38,6 +38,8 @@ public class VeiculosDbPortOutImpl implements VeiculosDbPortOut {
     @Override
     public Veiculo saveVeiculo(Veiculo veiculo) {
         veiculo.setCreated(new Date());
+        veiculo.setCheckup(false);
+        veiculo.setAutonomia(0d);
         return repository.save(veiculo);
     }
 

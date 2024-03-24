@@ -6,12 +6,14 @@ import com.itau.desafio.framework.adapter.out.service.OperacoesCaminhao;
 import com.itau.desafio.framework.adapter.out.service.OperacoesCarro;
 import com.itau.desafio.framework.adapter.out.service.OperacoesMoto;
 import com.itau.desafio.framework.adapter.out.service.OperacoesOnibus;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 
 import java.util.HashMap;
 import java.util.Map;
 
 @Component
+@Slf4j
 public class VeiculoService {
     private final Map<String, OperacoesVeiculo> operacoesPorTipo;
 
@@ -29,10 +31,14 @@ public class VeiculoService {
 
     //Receber veiculo, realizar checkup e retornar veiculo
     public void realizarCheckup(Veiculo veiculo){
-        getOperacoesPorTipo(veiculo.getTipo().toString().toLowerCase()).realizarCheckup(veiculo);;
+        log.info("Realizando checkup do veiculo: {}", veiculo);
+        getOperacoesPorTipo(veiculo.getTipo().toString().toLowerCase()).realizarCheckup(veiculo);
+        log.info("Checkup realizado com sucesso: {}", veiculo);
     }
 
     public void calcularAutonomia(Veiculo veiculo){
+        log.info("Calculando autonomia do veiculo: {}", veiculo);
         getOperacoesPorTipo(veiculo.getTipo().toString().toLowerCase()).calcularAutonomiaTotal(veiculo);
+        log.info("Autonomia calculada com sucesso: {}", veiculo);
     }
 }
