@@ -10,7 +10,6 @@ import java.util.List;
 public interface VeiculosPortIn {
 
     List<VeiculoResponseDTO> getAllVeiculos();
-    List<VeiculoResponseDTO> getVeiculosByMarcaAndAno(String marca, Integer ano);
 
     VeiculoResponseDTO getVeiculoById(Long id);
 
@@ -20,10 +19,13 @@ public interface VeiculosPortIn {
     VeiculoResponseDTO patchVeiculo(Long id, VeiculoRequestDTO veiculoRequestDTO);
     void deleteVeiculo(Long id);
 
+    VeiculoResponseDTO realizarCheckup(Long id);
+    VeiculoResponseDTO calcularAutonomia(Long id);
+
     GenericResponse getQuantidadeByMarca(String marca);
 
     GenericResponse getQuantidadeByDecada(Integer ano);
+    List<VeiculoResponseDTO> getVeiculosByMarcaAndAno(String marca, Integer ano);
 
-    VeiculoResponseDTO realizarCheckup(Long id);
-    VeiculoResponseDTO calcularAutonomia(Long id);
+
 }
