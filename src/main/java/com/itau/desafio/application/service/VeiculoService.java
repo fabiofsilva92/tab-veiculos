@@ -1,6 +1,6 @@
 package com.itau.desafio.application.service;
 
-import com.itau.desafio.domain.db.Veiculo;
+import com.itau.desafio.domain.db.entities.Veiculo;
 import com.itau.desafio.domain.out.OperacoesVeiculo;
 import com.itau.desafio.framework.adapter.out.service.OperacoesCaminhao;
 import com.itau.desafio.framework.adapter.out.service.OperacoesCarro;
@@ -29,16 +29,15 @@ public class VeiculoService {
         return operacoesPorTipo.get(tipo);
     }
 
-    //Receber veiculo, realizar checkup e retornar veiculo
     public void realizarCheckup(Veiculo veiculo){
         log.info("Realizando checkup do veiculo: {}", veiculo);
-        getOperacoesPorTipo(veiculo.getTipo().toString().toLowerCase()).realizarCheckup(veiculo);
-        log.info("Checkup realizado com sucesso: {}", veiculo);
+        OperacoesVeiculo operacoesTipo = getOperacoesPorTipo(veiculo.getTipo().toString().toLowerCase());
+        operacoesTipo.realizarCheckup(veiculo);
+        log.info("Checkup realizado com sucesso-> tipo : {}, veiculo: {}", veiculo.getTipo(), veiculo);
+    }
+    public void calcularAutonomia(Veiculo veiculo) {
+        OperacoesVeiculo operacoesTipo = getOperacoesPorTipo(veiculo.getTipo().toString().toLowerCase());
+        operacoesTipo.calcularAutonomiaTotal(veiculo);
     }
 
-    public void calcularAutonomia(Veiculo veiculo){
-        log.info("Calculando autonomia do veiculo: {}", veiculo);
-        getOperacoesPorTipo(veiculo.getTipo().toString().toLowerCase()).calcularAutonomiaTotal(veiculo);
-        log.info("Autonomia calculada com sucesso: {}", veiculo);
-    }
 }

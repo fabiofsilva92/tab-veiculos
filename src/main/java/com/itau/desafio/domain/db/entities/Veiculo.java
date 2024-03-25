@@ -1,4 +1,4 @@
-package com.itau.desafio.domain.db;
+package com.itau.desafio.domain.db.entities;
 
 import com.itau.desafio.domain.enums.TiposVeiculoEnum;
 
@@ -17,8 +17,6 @@ import java.util.Date;
 @NoArgsConstructor
 @Table(name = "veiculo")
 public class Veiculo {
-    //Ajustar modelo Veiculos para aceitar diversos tipos de veiculos
-    //Para aplicar o modelo solid, fazer classes especificas para calcular autonomia, realizar checkup
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;

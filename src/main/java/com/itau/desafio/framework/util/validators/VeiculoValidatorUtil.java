@@ -1,6 +1,6 @@
 package com.itau.desafio.framework.util.validators;
 
-import com.itau.desafio.domain.db.Veiculo;
+import com.itau.desafio.domain.db.entities.Veiculo;
 
 public class VeiculoValidatorUtil {
 
@@ -25,10 +25,9 @@ public class VeiculoValidatorUtil {
         if(veiculoWithUpdates.getCapacidadeTanque() != null && veiculoWithUpdates.getCapacidadeTanque() != 0){
             existingVeiculo.setCapacidadeTanque(veiculoWithUpdates.getCapacidadeTanque());
         }
-        if(veiculoWithUpdates.getAutonomia() != null && veiculoWithUpdates.getAutonomia() != 0){
-            existingVeiculo.setAutonomia(veiculoWithUpdates.getAutonomia());
+        if(veiculoWithUpdates.getConsumo() != null && veiculoWithUpdates.getConsumo() != 0){
+            existingVeiculo.setConsumo(veiculoWithUpdates.getConsumo());
         }
-
 
         return existingVeiculo;
     }

@@ -1,6 +1,6 @@
 package com.itau.desafio.framework.adapter.out.persistence;
 
-import com.itau.desafio.domain.db.Veiculo;
+import com.itau.desafio.domain.db.entities.Veiculo;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;

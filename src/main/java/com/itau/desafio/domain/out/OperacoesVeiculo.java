@@ -1,6 +1,6 @@
 package com.itau.desafio.domain.out;
 
-import com.itau.desafio.domain.db.Veiculo;
+import com.itau.desafio.domain.db.entities.Veiculo;
 
 public interface OperacoesVeiculo {
 

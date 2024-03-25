@@ -2,7 +2,7 @@ package com.itau.desafio.framework.util.mapper;
 
 
 
-import com.itau.desafio.domain.db.Veiculo;
+import com.itau.desafio.domain.db.entities.Veiculo;
 import com.itau.desafio.framework.adapter.in.dtos.VeiculoRequestDTO;
 import com.itau.desafio.framework.adapter.in.dtos.VeiculoResponseDTO;
 
