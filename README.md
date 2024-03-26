@@ -12,13 +12,13 @@ O projeto é parte do desafio  tema livre do Itau, é uma aplicação Java que i
 
 ## Pré-requisitos
 
-- [Docker](https://www.docker.com/products/docker-desktop)
+- [Docker](https://www.docker.com/products/docker-desktop) 
 
   OU
 
 - IDE com Java 17 + Mysql
 
-
+  
 
 Será demonstrado na apresentação o passo com o requisito abaixo.
 
@@ -38,13 +38,13 @@ Antes de iniciar, certifique-se de que possui docker inicializado em sua máquin
    git clone <url-do-repositorio>
    ```
 
-2. Certifique que seu Docker esteja rodando normalmente na maquina e inicie o script disponibilizado através do seu terminal:
+2. Certifique que seu Docker esteja rodando normalmente na maquina e inicie o script disponibilizado através do seu terminal: 
 
    ```bash
    ./build_and_run.sh
    ```
 
-
+   
 
 O script entrará em na pasta de cada microsserviço gerará as imagens através do Dockerfile e depois usará o docker-compose para subir a aplicação com todas configurações necessárias.
 
@@ -58,14 +58,14 @@ O script entrará em na pasta de cada microsserviço gerará as imagens através
    git clone <url-do-repositorio>
    ```
 
-2. Certifique que seu Docker esteja rodando normalmente na maquina mova para a pasta da aplicação da api e construa a partir do DockerFile:
+2. Certifique que seu Docker esteja rodando normalmente na maquina mova para a pasta da aplicação da api e construa a partir do DockerFile: 
 
    ```bash
    cd desafio
    docker build -t desafio-api .
    ```
 
-3. Volte para a pasta anterior e entre na pasta da aplicação listener e construa a partir do DockerFile:
+3. Volte para a pasta anterior e entre na pasta da aplicação listener e construa a partir do DockerFile: 
 
    ```bash
    cd ..
@@ -73,7 +73,7 @@ O script entrará em na pasta de cada microsserviço gerará as imagens através
    docker build -t db-listener .
    ```
 
-4. Volte para a pasta anterior e execute o docker-compose:
+4. Volte para a pasta anterior e execute o docker-compose: 
 
    ```bash
    cd ..
@@ -90,27 +90,27 @@ O script entrará em na pasta de cada microsserviço gerará as imagens através
    git clone <url-do-repositorio>
    ```
 
-2. Suba uma instancia de banco de dados MySql na porta 3306 através do seguinte comando docker:
+2. Suba uma instancia de banco de dados MySql na porta 3306 através do seguinte comando docker: 
 
    ```bash
     docker run --name desafiodb -e MYSQL_ROOT_PASSWORD=pass -p 3306:3306 mysql:8.0.0
    ```
 
-3. Após a instancia subir, abra a aplicação desafio em sua IDE de preferencia e inicie o programa:
+3. Após a instancia subir, abra a aplicação desafio em sua IDE de preferencia e inicie o programa: 
 
    ```bash
    Ao iniciar desafio-api, a configuração padrão ja se conectará com o banco de dados e incluirá alguns dados para teste através do flyway, além das triggers e tabelas necessárias.
    A aplicação estará disponível na porta 8080
    ```
 
-4. Após o inicio da API, inicie a aplicação db-listener-file-creation em sua IDE de preferencia:
+4. Após o inicio da API, inicie a aplicação db-listener-file-creation em sua IDE de preferencia: 
 
    ```bash
    Essa aplicação iniciará na porta 8081, com um agendador para verificar as mudanças no banco de dados da API.
    Toda mudança  no banco será registrada em um arquivo json que ficará disponível na pasta C:/tmp
    ```
 
-
+   
 
 ## Instruções de Uso(Para testes do avaliador)
 
@@ -118,7 +118,7 @@ Após o inicio a aplicação estará disponível para testes, vale ressaltar alg
 
 - Para a inclusão de novos veículos, temos um validator para a marca portanto deve-se atentar as marcas aceitas (não é case sensitive):
 
-    - ```
+  - ```
     "AUDI", "BMW", "CHEVROLET", "FORD", "HONDA", "TOYOTA"
     ```
 
@@ -133,7 +133,7 @@ Após o inicio a aplicação estará disponível para testes, vale ressaltar alg
 
 
 
-## Operações
+## Operações 
 
 ### Endpoints da API
 
@@ -173,11 +173,13 @@ Após o inicio a aplicação estará disponível para testes, vale ressaltar alg
 
 ### Desenho da Solução
 
-![Desenho da solução](C:\Users\Fábio\Documents\Estudos\Itau\Desenho da solução.png)
+![Desenho da solução](https://github.com/fabiofsilva92/tab-veiculos/assets/61157010/6b15145f-cc90-4f0f-8a9a-36bb6f1e960c)
+
 
 ### Diagrama de Sequência
 
-![sequencia](C:\Users\Fábio\Documents\Estudos\Itau\sequencia.jpg)
+
+![sequencia](https://github.com/fabiofsilva92/tab-veiculos/assets/61157010/00ab5812-b18b-414b-b266-7e04bafa4a0b)
 
 
 
