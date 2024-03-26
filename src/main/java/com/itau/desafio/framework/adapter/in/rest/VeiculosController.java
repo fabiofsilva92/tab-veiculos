@@ -4,6 +4,7 @@ import com.itau.desafio.application.port.in.VeiculosPortIn;
 import com.itau.desafio.framework.adapter.in.dtos.GenericResponse;
 import com.itau.desafio.framework.adapter.in.dtos.VeiculoRequestDTO;
 import com.itau.desafio.framework.adapter.in.dtos.VeiculoResponseDTO;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,6 +17,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/veiculos")
+@Tag(name = "Veiculos REST")
 public class VeiculosController {
 
     @Autowired

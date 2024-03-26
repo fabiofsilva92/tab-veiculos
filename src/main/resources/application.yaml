@@ -34,3 +34,8 @@ logging:
         type:
           descriptor:
             sql: trace
+
+
+springdoc:
+  api-docs:
+    path: /api-docs

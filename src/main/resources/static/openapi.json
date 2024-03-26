@@ -1,0 +1,353 @@
+{
+  "openapi": "3.0.1",
+  "info": {
+    "title": "API DESAFIO ITAU",
+    "description": "Apenas exemplo",
+    "version": "1"
+  },
+  "servers": [
+    {
+      "url": "http://localhost:8080",
+      "description": "Generated server url"
+    }
+  ],
+  "paths": {
+    "/veiculos/{id}": {
+      "get": {
+        "tags": [
+          "Veiculos REST"
+        ],
+        "operationId": "getVeiculoById",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/VeiculoResponseDTO"
+                }
+              }
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Veiculos REST"
+        ],
+        "operationId": "updateVeiculo",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/VeiculoRequestDTO"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/VeiculoResponseDTO"
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Veiculos REST"
+        ],
+        "operationId": "deleteVeiculo",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
+      "patch": {
+        "tags": [
+          "Veiculos REST"
+        ],
+        "operationId": "patchVeiculo",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/VeiculoRequestDTO"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/VeiculoResponseDTO"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/veiculos": {
+      "get": {
+        "tags": [
+          "Veiculos REST"
+        ],
+        "operationId": "getAll",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/VeiculoResponseDTO"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Veiculos REST"
+        ],
+        "operationId": "saveVeiculo",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/VeiculoRequestDTO"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/VeiculoResponseDTO"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/veiculos/checkup": {
+      "post": {
+        "tags": [
+          "Veiculos REST"
+        ],
+        "operationId": "realizarCheckup",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/VeiculoResponseDTO"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/veiculos/autonomia": {
+      "post": {
+        "tags": [
+          "Veiculos REST"
+        ],
+        "operationId": "calcularAutonomia",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/VeiculoResponseDTO"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "VeiculoRequestDTO": {
+        "type": "object",
+        "properties": {
+          "tipo": {
+            "type": "string",
+            "enum": [
+              "CARRO",
+              "MOTO",
+              "ONIBUS",
+              "CAMINHAO"
+            ]
+          },
+          "veiculo": {
+            "type": "string"
+          },
+          "marca": {
+            "type": "string"
+          },
+          "ano": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "descricao": {
+            "type": "string"
+          },
+          "capacidadeTanque": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "consumo": {
+            "type": "integer",
+            "format": "int32"
+          }
+        }
+      },
+      "VeiculoResponseDTO": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "tipo": {
+            "type": "string",
+            "enum": [
+              "CARRO",
+              "MOTO",
+              "ONIBUS",
+              "CAMINHAO"
+            ]
+          },
+          "veiculo": {
+            "type": "string"
+          },
+          "marca": {
+            "type": "string"
+          },
+          "ano": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "descricao": {
+            "type": "string"
+          },
+          "capacidadeTanque": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "consumo": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "autonomia": {
+            "type": "number",
+            "format": "double"
+          },
+          "checkup": {
+            "type": "boolean"
+          },
+          "created": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "updated": {
+            "type": "string",
+            "format": "date-time"
+          }
+        }
+      }
+    }
+  }
+}
