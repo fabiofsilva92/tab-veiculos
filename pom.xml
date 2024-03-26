@@ -9,7 +9,7 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.itau</groupId>
-	<artifactId>desafio</artifactId>
+	<artifactId>desafio-api</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>desafio</name>
 	<description>Itau desafio</description>

@@ -20,6 +20,8 @@ BEGIN
                NOW(),
                JSON_OBJECT(
                        'operacao', 'UPDATE',
+                       'data', NOW(),
+                       'id', NEW.id,
                        'dadosVeiculo', JSON_OBJECT(
                                'id', CASE WHEN NEW.id != OLD.id THEN NEW.id ELSE NULL END,
                                'veiculo', CASE WHEN NEW.veiculo != OLD.veiculo THEN NEW.veiculo ELSE NULL END,
@@ -52,6 +54,8 @@ BEGIN
                NOW(),
                JSON_OBJECT(
                        'operacao', 'INSERT',
+                       'data', NOW(),
+                       'id', NEW.id,
                        'dadosVeiculo', JSON_OBJECT(
                                'id', NEW.id,
                                'veiculo', NEW.veiculo,
@@ -83,6 +87,8 @@ BEGIN
                NOW(),
                JSON_OBJECT(
                     'operacao', 'DELETE',
+                    'data', NOW(),
+                    'id', OLD.id,
                     'dadosVeiculo', JSON_OBJECT(
                                'id', OLD.id,
                                'veiculo', OLD.veiculo,
